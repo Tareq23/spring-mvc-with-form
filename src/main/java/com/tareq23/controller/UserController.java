@@ -26,11 +26,13 @@ public class UserController {
 		
 		if(result.hasErrors()) {
 			System.out.println("User has errors!");
+			return new ModelAndView("index").addObject("user",user);
 		}
 		else {
 			System.out.println("User has no errors");
+			return modelAndView;
 		}
-		System.out.println("user-register");
-		return modelAndView;
+//		System.out.println("user-register");
+		
 	}
 }
