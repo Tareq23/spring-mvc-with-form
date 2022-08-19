@@ -1,7 +1,22 @@
 package com.tareq23.model;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
+
+
+
 public class User {
-	private String name,email,password,country,gender;
+	
+	@NotEmpty
+	@Size(min=5, max=45)
+	private String name;
+	
+	
+	private String email;
+	private String password;
+	private String country;
+	private String gender;
 
 	public String getGender() {
 		return gender;
