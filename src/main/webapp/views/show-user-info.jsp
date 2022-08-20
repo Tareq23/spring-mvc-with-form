@@ -12,6 +12,12 @@
 	<p>name : ${user.name}</p>
 	<p>email : ${user.email }</p>
 	<p>gender: ${user.gender }</p>
+	<p>
+		Visited Country List : 
+		<c:forEach items="${user.visitedCountries}" var="country">
+			<c:out value="${country}"></c:out>
+		</c:forEach>
+	</p>
 
 </body>
 </html>

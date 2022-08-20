@@ -1,5 +1,8 @@
 package com.tareq23.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -25,8 +28,16 @@ public class UserController {
 //		System.out.println(result);
 		
 		if(result.hasErrors()) {
-			System.out.println("User has errors!");
-			return new ModelAndView("index").addObject("user",user);
+			System.out.println(result);
+			Map<String,String> countryMap = new HashMap<String, String>();
+			countryMap.put("bangladesh", "Bangladesh");
+			countryMap.put("India", "India");
+			countryMap.put("Pakistan", "Pakistan");
+			countryMap.put("USA", "USA");
+			countryMap.put("Russia", "Russia");
+			user.setEmail("");
+			user.setPassword("");
+			return new ModelAndView("index").addObject("user",user).addObject("countryMap", countryMap);
 		}
 		else {
 			System.out.println("User has no errors");

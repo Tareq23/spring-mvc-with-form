@@ -18,6 +18,7 @@
 	<div class="form-group row">
     <label for="inputName" class="col-sm-2 col-form-label">Name</label>
     <div class="col-sm-10">
+    	<form:errors path="name" class="text-danger" />
     	<form:input type="text" path="name" class="form-control" id="inputName" placeholder="Full name"/>
       <!-- <input type="text" class="form-control" id="inputName" placeholder="Full Name"> -->
     </div>
@@ -25,6 +26,7 @@
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
     <div class="col-sm-10">
+    <form:errors path="email" class="text-danger" />
     <form:input type="email" path="email" class="form-control" id="inputEmail3" placeholder="Email"/>
       <!-- <input type="email" class="form-control" id="inputEmail3" placeholder="Email"> -->
     </div>
@@ -32,10 +34,29 @@
   <div class="form-group row">
     <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
     <div class="col-sm-10">
+      <form:errors path="password" class="text-danger" />
       <form:input path="password" type="password" class="form-control" id="inputPassword3" placehodler="Password"/>
       <!-- <input type="password" class="form-control" id="inputPassword3" placeholder="Password"> -->
     </div>
   </div>
+  
+  <div class="form-group row">
+  
+  	<label for="selectCountry" class="col-sm-2 col-form-label">Country</label>
+  	<div class="col-sm-10">
+  		<form:select class="form-control" id="selectCountry" path="country" items="${countryMap}"/>
+  			
+  	</div>
+  </div>
+  
+  <div class="form-group row">
+  
+  	<label for="visitedCountry" class="col-sm-2 col-form-label">Visited Countries</label>
+  	<div class="col-sm-10">
+  		<form:checkboxes class="form-control" id="visitedCountry" path="visitedCountries" items="${countryMap}"/>
+  	</div>
+  </div>
+  
   <fieldset class="form-group">
     <div class="row">
       <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
@@ -59,12 +80,7 @@
         	<form:radiobutton path="gender" label="Female" class="form-check-input" id="gridRadios3" value="Female" />
         </div>
         
-       <!-- <div class="form-check disabled">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
-          <label class="form-check-label" for="gridRadios3">
-            Third disabled radio
-          </label>
-        </div> -->
+       
       </div>
     </div>
 <!--   </fieldset>
