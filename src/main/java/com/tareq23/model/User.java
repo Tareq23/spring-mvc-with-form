@@ -19,9 +19,22 @@ public class User {
 	
 	@Size(min=6, max=16, message="Password length should be between 6 to 16")
 	private String password;
+	
+	
 	private String country;
 	private String gender;
 	private String[] visitedCountries;
+	
+	
+
+	public User(@Size(min = 5, max = 45, message = "Enter your name between 5 to 40 characters") String name,
+			@Email @Size(max = 50, message = "Enter your email which length less than equal 50") String email,
+			@Size(min = 6, max = 16, message = "Password length should be between 6 to 16") String password) {
+		
+		this.name = name;
+		this.email = email;
+		this.password = password;
+	}
 
 	public String[] getVisitedCountries() {
 		return visitedCountries;
@@ -70,4 +83,10 @@ public class User {
 	public void setCountry(String country) {
 		this.country = country;
 	}
+
+	@Override
+	public String toString() {
+		return "User [name=" + name + ", email=" + email + ", password=" + password + "]";
+	}
+	
 }
