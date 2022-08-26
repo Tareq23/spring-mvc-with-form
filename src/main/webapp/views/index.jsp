@@ -15,8 +15,6 @@
 <body>
 	
 	
-	<p>${welcome}</p>
-	
 	<div class="container">
 	
 		<div class="col-sm-10">

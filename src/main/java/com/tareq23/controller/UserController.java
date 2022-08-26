@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tareq23.DAO.AppDAOImplements;
@@ -37,10 +39,18 @@ public class UserController {
 	
 	
 	@GetMapping("/add-user")
-	public ModelAndView addUser() {
+	public ModelAndView addUserView() {
 		ModelAndView modelAndView = new ModelAndView("addUser");
+		modelAndView.addObject("user",new User());
 		return modelAndView;
-		
+	}
+	
+	@PostMapping("/add-user")
+	public ModelAndView addUser(User user)
+	{
+		ModelAndView modelAndView = new ModelAndView("index");
+		System.out.println(user);
+		return modelAndView;
 	}
 
 }

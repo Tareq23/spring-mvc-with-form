@@ -14,7 +14,6 @@ public class MainController {
 	{
 		ModelAndView modelAndView = new ModelAndView("index");
 		
-		modelAndView.addObject("welcome", "Hi, Welcome to our website");
 		return modelAndView;
 	}
 	
