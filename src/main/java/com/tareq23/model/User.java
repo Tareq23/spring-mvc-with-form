@@ -1,11 +1,20 @@
 package com.tareq23.model;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
+
 public class User {
 	
 	
 	private int userId;
+	
+	@Size(min=4, max=49)
 	private String userName;
+	
+	@Email
 	private String userEmail;
+	
+	@Size(min=6, max=16)
 	private String userPassword;
 	public int getUserId() {
 		return userId;

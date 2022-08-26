@@ -65,4 +65,38 @@ public class AppDAOImplements implements AppDAO {
 		}
 	}
 
+
+	@Override
+	public void addUser(User user) {
+		
+		
+		String sql = "insert into users (user_name, email, password) values(?, ?, ?);";
+		
+		Connection connection = null;
+		
+		try {
+			connection = dataSource.getConnection();
+			
+			PreparedStatement ps = connection.prepareStatement(sql);
+			ps.setString(1, user.getUserName());
+			ps.setString(2, user.getUserEmail());
+			ps.setString(3, user.getUserPassword());
+			ps.execute();
+			ps.close();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+			}
+		}
+		
+	}
+
 }

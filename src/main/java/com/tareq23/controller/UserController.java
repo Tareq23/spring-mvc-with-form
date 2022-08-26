@@ -3,10 +3,14 @@ package com.tareq23.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,6 +37,7 @@ public class UserController {
 		users = DAO.listUser();
 		
 		modelAndView.addObject("users",users);
+		context.close();
 		
 		return modelAndView;
 	}
@@ -46,11 +51,28 @@ public class UserController {
 	}
 	
 	@PostMapping("/add-user")
-	public ModelAndView addUser(User user)
+	public ModelAndView addUser(@ModelAttribute("user") @Valid User user, BindingResult result)
 	{
-		ModelAndView modelAndView = new ModelAndView("index");
-		System.out.println(user);
-		return modelAndView;
+//		ModelAndView modelAndView = new ModelAndView("index");
+//		
+//		
+//		modelAndView.addObject("user", user);
+		
+		if(result.hasErrors()) {
+			System.out.println(result);
+			return new ModelAndView("addUser").addObject("user",user);
+		}
+		else {
+			AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+			
+			AppDAOImplements DAO = context.getBean("DAOBean",AppDAOImplements.class);
+			
+			DAO.addUser(user);
+			context.close();
+			
+			return this.viewUser();
+		}
+		
 	}
 
 }

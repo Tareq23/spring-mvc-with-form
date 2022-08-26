@@ -17,22 +17,21 @@
 			<p class="mt-5">Add New User</p>
 			<form:form modelAttribute="user" action="${pageContext.request.contextPath}/add-user" method="post">
 			 <div class="form-group">
-			    <label for="exampleInputName">Email address</label>
-			    <form:input  path="userName" class="form-control" id="exampleInputName" value="" aria-describedby="emailHelp" placeholder="Enter email"/>
-			    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+			    <label for="exampleInputName">Your Name</label>
+			    <form:errors path="userName" class="text-danger" />
+			    <form:input  path="userName" type="text" class="form-control" id="exampleInputName" value=""  placeholder="Enter Your name"/>
+			    
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleInputEmail1">Email address</label>
-			    <form:input path="userEmail" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
+			    <form:errors path="userEmail" class="text-danger" />
+			    <form:input path="userEmail"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
 			    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleInputPassword1">Password</label>
+			    <form:errors path="userPassword" class="text-danger" />
 			    <form:input path="userPassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
-			  </div>
-			  <div class="form-group form-check">
-			    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-			    <label class="form-check-label" for="exampleCheck1">Check me out</label>
 			  </div>
 			  <button type="submit" class="btn btn-primary">Submit</button>
 			</form:form>
