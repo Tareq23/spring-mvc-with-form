@@ -23,7 +23,7 @@ public class Brands {
 	
 	@GET
 	@Path("/brands")
-	@Produces(MediaType.APPLICATION_XML)
+	@Produces(MediaType.APPLICATION_JSON)
 	public List<BrandEntity> getBrands()
 	{
 		List<BrandEntity> listBrands = brandService.getBrands();
@@ -32,14 +32,14 @@ public class Brands {
 	
 	@POST
 	@Path("/brands")
-	@Consumes(MediaType.APPLICATION_XML)
+	@Consumes(MediaType.APPLICATION_JSON)
 	public void postBrand(BrandEntity brand) {
 		brandService.addBrand(brand);
 	}
 	
 	@PUT
 	@Path("/brands/{brandId}")
-	@Consumes(MediaType.APPLICATION_XML)
+	@Consumes(MediaType.APPLICATION_JSON)
 	public void putBrand(@PathParam("brandId") int brandId, BrandEntity updatedBrand) {
 		updatedBrand.setBrandId(brandId);
 		brandService.updateBrand(updatedBrand);
@@ -47,7 +47,7 @@ public class Brands {
 	
 	@DELETE
 	@Path("/brands/{brandId}")
-	@Consumes(MediaType.APPLICATION_XML)
+	@Consumes(MediaType.APPLICATION_JSON)
 	public void deleteBrand(@PathParam("brandId") int brandId, BrandEntity deletedBrand)
 	{
 		brandService.deleteBrand(brandId);
